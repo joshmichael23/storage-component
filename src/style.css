@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+
+:root{
+    --PaleBlue: hsl(243, 100%, 93%);
+    --GrayishBlue: hsl(229, 7%, 55%);
+    --DarkBlue: hsl(228, 56%, 26%);
+    --VeryDarkBlue: hsl(229, 57%, 11%);
+    --gradient: linear-gradient(hsl(6, 100%, 80%), hsl(335, 100%, 65%));
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+img, svg{
+    max-width: 100%;
+    height: auto;
+}
+
+body{
+    height: 100vh;
+    font-family: "Raleway";
+    background-repeat: no-repeat;
+    
+    background-color: hsl(229, 57%, 11%);
+    
+}
+
+.App{
+    height: 100vh;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+.wrapper{
+    
+    display: grid;
+}
+
+.wrapper > div{
+    background-color: var(--DarkBlue);
+}
+
+.main-content{
+    height: 200px;
+    border-radius: 1rem 7rem 1rem 1rem;
+    display: grid;
+    padding: 2rem;
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    align-items: center;
+}
+
+    .content-buttons{
+        display: flex;
+        justify-content: start;
+        gap: 1rem;
+    }
+
+    .content-buttons > button{
+        background-color: var(--VeryDarkBlue);
+        color: var(--PaleBlue);
+        border: none;
+        width: 50px;
+        height: 50px;
+        padding: .5rem;
+        border-radius: .5rem;
+        cursor: pointer;
+    }
+
+
+
+.sub-content{
+    position: relative;
+    color: var(--PaleBlue);
+    display:grid;
+    gap: 1em;
+    height: 150px;
+    border-radius: 1rem;
+    padding: 2rem;
+    
+}
+
+.sub-content > .desc{
+    font-size: 14px;
+}
+
+.sub-content > .desc > span{
+    font-weight:bold;
+}
+
+.sub-content > input {
+    width: 100%;
+}
+
+.sub-content > .labels{
+    font-size: 12px;
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+.sub-content > .labels > span{
+    font-weight: bold;
+}
+
+
+h1{
+    color: var(--DarkBlue);
+}
+.popUp{
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-content: center;
+    background-color: white;
+    width: 180px;
+    height: 70px;
+    border-radius: .5rem;
+    padding: 1rem;
+    align-items: center;
+    justify-items: center;
+    color: var(--GrayishBlue);
+    font-weight: 700;
+
+}
+
+.popUp > p{
+    font-size: 12px;
+    letter-spacing: 0.125rem;
+}
+
+.triangle{
+    display: none;
+    position: absolute;
+    height: 0;
+    width: 0;
+    right:0;
+    bottom:-1.5rem;
+    border-bottom: 30px solid transparent;
+    border-left: 30px solid transparent;
+    border-right: 30px solid white;
+}
+
+input[type="range"]{
+    background-color: transparent;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+
+input[type="range"]::-webkit-slider-runnable-track {
+ /* Override default look */
+    background: linear-gradient(to right, hsl(6, 100%, 80%) 25%, hsl(335, 100%, 65%) 72%, var(--VeryDarkBlue) 72%);
+    border: none;
+    height: 1.2rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 3px solid var(--VeryDarkBlue);
+    
+}
+
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    margin-top: 1px; /* Centers thumb on the track */
+    background-color: white;
+    outline: 1px solid hsl(335, 100%, 65%);
+    height: .8rem;
+    width: .8rem;
+    border-radius: 50%;
+    
+ }
+
+input[type="range"]::-webkit-slider-thumb::before {
+    content: '';
+    display: inline-block;
+    width: 400px;
+    height: 2rem;
+    background-image: linear-gradient(hsl(6, 100%, 80%), hsl(335, 100%, 65%));
+}
+
+input[type="range"]::-moz-range-track {
+    background: var(--VeryDarkBlue);
+    height: 0.5rem;
+}
+
+
+input[type="range"]::-moz-range-thumb {
+    border: none; /*Removes extra border that FF applies*/
+    border-radius: 0; /*Removes default border-radius that FF applies*/
+    background-color: #5cd5eb;
+    height: 2rem;
+    width: 1rem;
+}
+
+
+@media screen and (min-width: 280px){
+    body{
+        background-size: cover;
+        background-image: url('./images/bg-mobile.png');
+    }
+
+    .wrapper{
+        align-items: end;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .popUp{
+        margin-left:auto;
+        margin-right: auto;
+        right: 0;
+        left: 0;
+        bottom: -2.5rem;
+    }
+
+    .sub-content{
+        gap: 0px;
+    }
+}
+
+@media screen and (min-width: 1000px){
+    body{
+        background-size: contain;
+        background-position-y: 120%;
+        background-image: url('./images/bg-desktop.png');
+    }
+
+    .wrapper{
+        
+        width: 1000px;
+        gap: 2rem;
+        grid-template-columns: 1fr 1.5fr;
+    }
+
+    .popUp{
+        margin-left: auto;
+        margin-right: 0;
+        right: 2rem;
+        top: -3rem;
+    }
+
+    .triangle{
+        display: block;
+    }
+}
